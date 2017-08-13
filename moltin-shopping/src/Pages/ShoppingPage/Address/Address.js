@@ -6,10 +6,9 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import DividerForm from './DividerForm/DividerForm';
+import Subheader from 'material-ui/Subheader';
 
-import { gateway as MoltinGateway } from '@moltin/sdk';
-import PropTypes from 'prop-types';
 const docDefinition = {
   content: [
     'pdfmake (since it\'s based on pdfkit) supports JPEG and PNG format',
@@ -88,18 +87,13 @@ class Address extends Component {
             <AppBar
               title="Checkout "
             />
-            <TextField
-              hintText="Enter your Username"
-              floatingLabelText="Username"
-              onChange = {(event,newValue) => this.setState({username:newValue})}
-            />
+            <Subheader
+            >Billing Address</Subheader>
+            <DividerForm />
             <br/>
-            <TextField
-              type="password"
-              hintText="Enter your Password"
-              floatingLabelText="Password"
-              onChange = {(event,newValue) => this.setState({password:newValue})}
-            />
+            <Subheader
+            >Shipping Address</Subheader>
+            <DividerForm />
             <br/>
             <RaisedButton label="Pay now" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
           </div>
