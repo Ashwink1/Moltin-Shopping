@@ -11,7 +11,7 @@ import {
   Redirect
 } from 'react-router-dom'
 
-const Home = () => (
+const Shop = () => (
   <p>
     A <code>&lt;Switch></code> renders the
     first child <code>&lt;Route></code> that
@@ -31,12 +31,12 @@ class ShoppingPage extends Component {
         <Router>
           <div>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/will-match">Will Match</Link></li>
+              <li><Link to="/">Shop</Link></li>
+              <li><Link to="/cart">Cart</Link></li>
             </ul>
             <Switch>
-              <Route path="/" exact component={Home}/>
-              <Route path="/will-match" component={WillMatch}/>
+              <Route path="/" exact component={Shop}/>
+              <Route path="/Cart" component={WillMatch}/>
             </Switch>
           </div>
         </Router>
