@@ -8,10 +8,10 @@ import {
   Route,
   Link,
   Switch,
-  Redirect
 } from 'react-router-dom'
 import Shopping from './Shopping/Shopping';
 import Cart from './Cart/Cart';
+import Address from './Address/Address';
 
 
 class ShoppingPage extends Component {
@@ -33,6 +33,7 @@ class ShoppingPage extends Component {
             <Switch>
               <Route path="/" exact component={Shopping}/>
               <Route path="/cart" component={Cart}/>
+              <Route path="/address" component={Address}/>
             </Switch>
           </div>
         </Router>

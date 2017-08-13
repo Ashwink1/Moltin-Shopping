@@ -6,6 +6,7 @@
     "@moltin/sdk": "^2.5.0",
     "axios": "^0.16.2",
     "material-ui": "^0.18.7",
+    "pdfmake": "^0.1.32",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",

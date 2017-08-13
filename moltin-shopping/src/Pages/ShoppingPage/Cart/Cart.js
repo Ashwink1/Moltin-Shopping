@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import FlatButton from 'material-ui/FlatButton';
+
 import { gateway as MoltinGateway } from '@moltin/sdk';
 
 class Cart extends Component {
@@ -31,13 +33,22 @@ class Cart extends Component {
     const { itemsInCart} = this.state;
     return (
       <div>
-        <div> In cart products</div>
-        {
-          itemsInCart && itemsInCart.length ? itemsInCart.map((item)=>{
-                      return <div>{item.name}</div>
+        <div>
+          <div> In cart products</div>
+          <div onClick={(e)=>{
+            console.log(" Checking out product--->", e);
+          }}> Click here to Checkout </div>
+          {
+            itemsInCart && itemsInCart.length ? itemsInCart.map((item)=>{
+              return <div key={item.id}>{item.name}</div>
             }) : <div>Nothing in CART</div>
-        }
+          }
+
+        </div>
+
       </div>
+
+
     );
   }
 }
