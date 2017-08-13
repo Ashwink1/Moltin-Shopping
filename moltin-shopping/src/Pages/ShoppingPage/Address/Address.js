@@ -50,11 +50,8 @@ class Address extends Component {
   }
 
   handleClick(event){
-    const Moltin = MoltinGateway({
-      client_id: '7awGlmFlyR5ARvBRJFswkDR1odhVvcFATgJjn1mLmL',
-    });
 
-    Moltin.Cart.Checkout({
+    this.props.moltin.Cart.Checkout({
       customer: {
         name: 'John Doe',
         email: 'john@doe.co'
@@ -78,7 +75,7 @@ class Address extends Component {
         country: 'US'
       }
     });
-    this.props.history.push('/payment-gateway');
+    this.props.match.history.push('/payment-gateway');
    // pdfMake.createPdf(docDefinition).download();
 
   }

@@ -16,8 +16,18 @@ class PaymentGate extends Component {
   }
 
   handleClick(){
-    console.log(" done--->", );
-    this.props.history.push('/');
+    console.log(" done--->", this.props.moltin.Order);
+  /*  this.props.moltin.Order.Payment(order.id, {
+      gateway: 'stripe',
+      method: 'purchase',
+      first_name: 'John',
+      last_name: 'Doe',
+      number: '4242424242424242',
+      month: '02',
+      year: '2020',
+      verification_value: '123'
+    });*/
+    this.props.match.history.push('/');
   }
 
   render() {

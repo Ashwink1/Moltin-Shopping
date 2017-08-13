@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { gateway as MoltinGateway } from '@moltin/sdk';
 
 const ShoppingCard = ({ data, addToCart }) => {
   return <div onClick={() => {
@@ -18,19 +17,16 @@ class Shopping extends Component {
 
   constructor(props, context) {
     super(props, context);
-    const Moltin = MoltinGateway({
-      client_id: '7awGlmFlyR5ARvBRJFswkDR1odhVvcFATgJjn1mLmL',
-    });
     this.state = {
-      Moltin: Moltin,
       contents: [],
     };
     this.addToCart = this.addToCart.bind(this);
   }
 
   componentWillMount() {
-    const { Moltin } = this.state;
-    Moltin.Products.All().then((products) => {
+    console.log("item --->", this.props.item);
+    const { moltin } = this.props;
+    moltin.Products.All().then((products) => {
       console.log(products);
       this.setState({
         contents: products.data,
@@ -39,7 +35,7 @@ class Shopping extends Component {
   }
 
   addToCart(id) {
-    this.state.Moltin.Cart.AddProduct(id, 1)
+    this.props.moltin.Cart.AddProduct(id, 1)
   }
 
   render() {
