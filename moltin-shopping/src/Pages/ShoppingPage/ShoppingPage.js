@@ -15,6 +15,12 @@ import Cart from './Cart/Cart';
 
 
 class ShoppingPage extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
+
   render() {
     return (
       <div>
@@ -26,7 +32,7 @@ class ShoppingPage extends Component {
             </ul>
             <Switch>
               <Route path="/" exact component={Shopping}/>
-              <Route path="/Cart" component={Cart}/>
+              <Route path="/cart" component={Cart}/>
             </Switch>
           </div>
         </Router>

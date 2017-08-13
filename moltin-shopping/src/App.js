@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/" exact component={ShoppingPage}/>
+            <Route path="/" component={ShoppingPage}/>
             <Route path="/login" component={Login}/>
             <Route component={NoMatch}/>
           </Switch>
