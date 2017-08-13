@@ -10,18 +10,8 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
-
-const Shop = () => (
-  <p>
-    A <code>&lt;Switch></code> renders the
-    first child <code>&lt;Route></code> that
-    matches. A <code>&lt;Route></code> with
-    no <code>path</code> always matches.
-  </p>
-)
-
-const WillMatch = () => <h3>Matched!</h3>
-
+import Shopping from './Shopping/Shopping';
+import Cart from './Cart/Cart';
 
 
 class ShoppingPage extends Component {
@@ -35,8 +25,8 @@ class ShoppingPage extends Component {
               <li><Link to="/cart">Cart</Link></li>
             </ul>
             <Switch>
-              <Route path="/" exact component={Shop}/>
-              <Route path="/Cart" component={WillMatch}/>
+              <Route path="/" exact component={Shopping}/>
+              <Route path="/Cart" component={Cart}/>
             </Switch>
           </div>
         </Router>
