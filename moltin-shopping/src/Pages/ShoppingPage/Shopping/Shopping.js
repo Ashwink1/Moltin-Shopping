@@ -3,13 +3,22 @@
  */
 
 import React, { Component } from 'react';
+import './shopping.css'
 import PropTypes from 'prop-types';
 
+
+
 const ShoppingCard = ({ data, addToCart }) => {
-  return <div onClick={() => {
+  console.log(" data--->", data);
+  return <div className="item_wrapper" onClick={() => {
     addToCart(data.id);
-  }}>{data.name}</div>;
+  }}> <div className="item_name"> Name: {data.name}</div>
+     <div className="item_Descrition">description: {data.description}</div>
+    <div className="item_Descrition">availability: {data.meta.stock.availability}</div>
+    <div className="button">Add To Cart</div>
+  </div>;
 };
+
 
 
 class Shopping extends Component {
