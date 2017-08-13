@@ -7,6 +7,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+
+import { gateway as MoltinGateway } from '@moltin/sdk';
 import PropTypes from 'prop-types';
 const docDefinition = {
   content: [
@@ -21,10 +23,66 @@ const style = {
   margin: 15,
 };
 
-const pdfMake  = require('pdfmake');
+let pdfMake  = require('pdfmake/build/pdfmake.js');
+ pdfMake.vfs = pdfMake.fonts = {
+   Roboto: {
+     normal: 'Roboto-Regular.ttf',
+     bold: 'Roboto-Medium.ttf',
+     italics: 'Roboto-Italic.ttf',
+     bolditalics: 'Roboto-MediumItalic.ttf'
+   }
+ };
+
+ console.log(" pdfMake--->",pdfMake );
+
+
 
 
 class Address extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      username:'',
+      password:''
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event){
+    const Moltin = MoltinGateway({
+      client_id: '7awGlmFlyR5ARvBRJFswkDR1odhVvcFATgJjn1mLmL',
+    });
+
+    Moltin.Cart.Checkout({
+      customer: {
+        name: 'John Doe',
+        email: 'john@doe.co'
+      },
+      billing_address: {
+        first_name: 'John',
+        last_name: 'Doe',
+        line_1: '123 Sunny Street',
+        line_2: 'Sunnycreek',
+        county: 'California',
+        postcode: 'CA94040',
+        country: 'US'
+      },
+      shipping_address: {
+        first_name: 'Jon',
+        last_name: 'Doe',
+        line_1: '123 Sunny Street',
+        line_2: 'Sunnycreek',
+        county: 'California',
+        postcode: 'CA94040',
+        country: 'US'
+      }
+    });
+    this.props.history.push('/payment-gateway');
+   // pdfMake.createPdf(docDefinition).download();
+
+  }
+
   render() {
     return (
       <div>

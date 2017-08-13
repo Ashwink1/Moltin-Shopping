@@ -19,6 +19,11 @@ class Cart extends Component {
       itemsInCart: [],
       Moltin:Moltin,
     };
+    this.onCheckout = this.onCheckout.bind(this);
+  }
+
+  onCheckout(){
+    this.props.history.push('/address');
   }
 
   componentWillMount() {
@@ -35,9 +40,7 @@ class Cart extends Component {
       <div>
         <div>
           <div> In cart products</div>
-          <div onClick={(e)=>{
-            console.log(" Checking out product--->", e);
-          }}> Click here to Checkout </div>
+          <div onClick={this.onCheckout}> Click here to Checkout </div>
           {
             itemsInCart && itemsInCart.length ? itemsInCart.map((item)=>{
               return <div key={item.id}>{item.name}</div>

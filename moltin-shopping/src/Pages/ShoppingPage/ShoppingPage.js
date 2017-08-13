@@ -12,6 +12,7 @@ import {
 import Shopping from './Shopping/Shopping';
 import Cart from './Cart/Cart';
 import Address from './Address/Address';
+import PaymentGate from './PaymentGate/PaymentGate';
 
 
 class ShoppingPage extends Component {
@@ -34,6 +35,7 @@ class ShoppingPage extends Component {
               <Route path="/" exact component={Shopping}/>
               <Route path="/cart" component={Cart}/>
               <Route path="/address" component={Address}/>
+              <Route path="/payment-gateway" component={PaymentGate}/>
             </Switch>
           </div>
         </Router>
