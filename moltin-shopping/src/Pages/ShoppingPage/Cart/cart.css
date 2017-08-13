@@ -1,0 +1,17 @@
+.header{
+  font-size: 40px;
+  color: brown;
+  padding: 20px;
+
+}
+
+.checkout-button{
+  color: coral;
+  background: aquamarine;
+  width: 500px;
+  position: relative;
+  left: 200px;
+  height: 45px;
+  padding-top: 20px;
+  text-align: center;
+}

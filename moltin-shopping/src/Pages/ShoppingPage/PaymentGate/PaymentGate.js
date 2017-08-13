@@ -16,7 +16,6 @@ class PaymentGate extends Component {
   }
 
   handleClick(){
-    console.log(" done--->", this.props.moltin.Order);
   /*  this.props.moltin.Order.Payment(order.id, {
       gateway: 'stripe',
       method: 'purchase',

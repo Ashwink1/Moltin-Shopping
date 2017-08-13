@@ -3,6 +3,9 @@
  */
 
 import React, { Component } from 'react';
+import './cart.css'
+
+import {CheckoutCard} from './../Component/ShoppingCard/ShoppingCard';
 
 class Cart extends Component {
   constructor(props, context) {
@@ -14,13 +17,14 @@ class Cart extends Component {
   }
 
   onCheckout() {
-    console.log(" --->", this.props);
     this.props.match.history.push('/address');
   }
 
   componentWillMount() {
     this.props.moltin.Cart.Items().then((item) => {
       this.setState({ itemsInCart: item.data });
+      console.log(" --->", this.state.itemsInCart);
+
     });
 
   }
@@ -31,11 +35,11 @@ class Cart extends Component {
     return (
       <div>
         <div>
-          <div> In cart products</div>
-          <div onClick={this.onCheckout}> Click here to Checkout</div>
+          <div className="header"> In cart products</div>
+          <div className="checkout-button" onClick={this.onCheckout}> Click here to Checkout</div>
           {
             itemsInCart && itemsInCart.length ? itemsInCart.map((item) => {
-              return <div key={item.id}>{item.name}</div>;
+              return <div key={item.id}><CheckoutCard data={item}/></div>;
             }) : <div>Nothing in CART</div>
           }
 
