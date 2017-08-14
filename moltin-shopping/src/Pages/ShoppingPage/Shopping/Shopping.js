@@ -3,8 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import {ShoppingCard} from './../Component/ShoppingCard/ShoppingCard';
-
+import { ShoppingCard } from './../Component/ShoppingCard/ShoppingCard';
 
 
 class Shopping extends Component {
@@ -28,7 +27,7 @@ class Shopping extends Component {
   }
 
   addToCart(id) {
-    this.props.moltin.Cart.AddProduct(id, 1)
+    this.props.moltin.Cart.AddProduct(id, 1);
   }
 
   render() {

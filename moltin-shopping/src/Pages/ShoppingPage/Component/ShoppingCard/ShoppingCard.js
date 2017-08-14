@@ -21,9 +21,10 @@ export const CheckoutCard = ({ data, removeFromCart }) => {
   return <div className="item_wrapper">
     <div className="item_name"> Name: {data.name}</div>
     <div className="item_Descrition">description: {data.description}</div>
-    <div className="item_Descrition">Amount: {data.unit_price.amount + " " + data.unit_price.currency}</div>
-    <div className="button"onClick={() => {
+    <div className="item_Descrition">Amount: {data.unit_price.amount + ' ' + data.unit_price.currency}</div>
+    <div className="button" onClick={() => {
       removeFromCart(data.id);
-    }}>Remove To Cart</div>
+    }}>Remove To Cart
+    </div>
   </div>;
 };

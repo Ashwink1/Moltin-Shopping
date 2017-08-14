@@ -16,44 +16,42 @@ const docDefinition = {
     {
       image: 'sampleImage.jpg',
     },
-  ]
-}
+  ],
+};
 const style = {
   margin: 15,
 };
 
-let pdfMake  = require('pdfmake/build/pdfmake.js');
- pdfMake.vfs = pdfMake.fonts = {
-   Roboto: {
-     normal: 'Roboto-Regular.ttf',
-     bold: 'Roboto-Medium.ttf',
-     italics: 'Roboto-Italic.ttf',
-     bolditalics: 'Roboto-MediumItalic.ttf'
-   }
- };
+let pdfMake = require('pdfmake/build/pdfmake.js');
+pdfMake.vfs = pdfMake.fonts = {
+  Roboto: {
+    normal: 'Roboto-Regular.ttf',
+    bold: 'Roboto-Medium.ttf',
+    italics: 'Roboto-Italic.ttf',
+    bolditalics: 'Roboto-MediumItalic.ttf',
+  },
+};
 
- console.log(" pdfMake--->",pdfMake );
-
-
+console.log(' pdfMake--->', pdfMake);
 
 
 class Address extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      username:'',
-      password:''
-    }
+    this.state = {
+      username: '',
+      password: '',
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event){
+  handleClick(event) {
 
     this.props.moltin.Cart.Checkout({
       customer: {
         name: 'John Doe',
-        email: 'john@doe.co'
+        email: 'john@doe.co',
       },
       billing_address: {
         first_name: 'John',
@@ -62,7 +60,7 @@ class Address extends Component {
         line_2: 'Sunnycreek',
         county: 'California',
         postcode: 'CA94040',
-        country: 'US'
+        country: 'US',
       },
       shipping_address: {
         first_name: 'Jon',
@@ -71,14 +69,14 @@ class Address extends Component {
         line_2: 'Sunnycreek',
         county: 'California',
         postcode: 'CA94040',
-        country: 'US'
-      }
-    }).then((item)=>{
-      console.log(" item--->", item);
+        country: 'US',
+      },
+    }).then((item) => {
+      console.log(' item--->', item);
       this.props.match.history.push(`/payment-gateway/${item.data.id}`);
     });
 
-   // pdfMake.createPdf(docDefinition).download();
+    // pdfMake.createPdf(docDefinition).download();
 
   }
 

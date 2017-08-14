@@ -7,7 +7,9 @@ import CircularProgress from 'material-ui/CircularProgress';
 import './PaymenGate.css';
 
 const Loader = () => {
-  return <div className="loader-wrapper"><div className="loader-center" ><CircularProgress size={60} thickness={7}/></div></div>;
+  return <div className="loader-wrapper">
+    <div className="loader-center"><CircularProgress size={60} thickness={7}/></div>
+  </div>;
 };
 
 class PaymentGate extends Component {
@@ -23,8 +25,6 @@ class PaymentGate extends Component {
   handleClick() {
 
     this.setState({ loader: true });
-    console.log(" this.props.match--->", this.props.match.match.params.id);
-    debugger;
     this.props.moltin.Orders.Payment(1, {
       gateway: 'stripe',
       method: 'purchase',
@@ -34,16 +34,16 @@ class PaymentGate extends Component {
       month: '02',
       year: '2020',
       verification_value: '123',
-    }).then((response)=>{
+    }).then((response) => {
       this.setState({ loader: false });
-      alert('done')
-    })
+      alert('done');
+    });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       alert('Purchase done');
       this.setState({ loader: false });
       this.props.match.history.push('/');
-    },7000)
+    }, 7000);
   }
 
   render() {

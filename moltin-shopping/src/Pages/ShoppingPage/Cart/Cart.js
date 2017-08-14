@@ -4,9 +4,9 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import './cart.css'
+import './cart.css';
 
-import {CheckoutCard} from './../Component/ShoppingCard/ShoppingCard';
+import { CheckoutCard } from './../Component/ShoppingCard/ShoppingCard';
 
 class Cart extends Component {
   constructor(props, context) {
@@ -25,31 +25,27 @@ class Cart extends Component {
   componentWillMount() {
     this.props.moltin.Cart.Items().then((item) => {
       this.setState({ itemsInCart: item.data });
-      console.log(" --->", this.state.itemsInCart);
-
     });
 
   }
 
   removeFromCart(id) {
 
-    const apiBaseUrl = "https://api.moltin.com/v2";
+    const apiBaseUrl = 'https://api.moltin.com/v2';
     axios.defaults.baseURL = apiBaseUrl;
     axios.defaults.headers.common['Authorization'] = 'Bearer: a5a86f35679405acb44e8e2010787a0966acf3ab';
     axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
-    axios.delete(apiBaseUrl+'/carts/supercart/items/'+id)
-      .then(function (response) {
-        console.log(response);
-        if(response.data.code == 200) {
-          console.log("Login successfull");
-        } else{
-          console.log("Username does not exists");
-          alert("Username does not exist");
+    axios.delete(apiBaseUrl + '/carts/supercart/items/' + id)
+      .then(function(response) {
+        if (response.data.code == 200) {
+          console.log('Removed item call agiin and get new cart lists');
+        } else {
+          console.log('some problem');
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }

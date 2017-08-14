@@ -26,9 +26,7 @@ class App extends Component {
   }
 
   isNotLoggedIn(nextState, replace) {
-    console.log(' here--->',);
     const user = localStorage.getItem('user');
-    console.log(" user--->",user );
     return !user;
   }
 
