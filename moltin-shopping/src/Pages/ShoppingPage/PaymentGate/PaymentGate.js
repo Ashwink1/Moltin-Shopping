@@ -23,7 +23,9 @@ class PaymentGate extends Component {
   handleClick() {
 
     this.setState({ loader: true });
-   /* this.props.moltin.Order.Payment(order.id, {
+    console.log(" this.props.match--->", this.props.match.match.params.id);
+    debugger;
+    this.props.moltin.Orders.Payment(1, {
       gateway: 'stripe',
       method: 'purchase',
       first_name: 'John',
@@ -32,9 +34,13 @@ class PaymentGate extends Component {
       month: '02',
       year: '2020',
       verification_value: '123',
-    });*/
+    }).then((response)=>{
+      this.setState({ loader: false });
+      alert('done')
+    })
 
     setTimeout(()=>{
+      alert('Purchase done');
       this.setState({ loader: false });
       this.props.match.history.push('/');
     },7000)

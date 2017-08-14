@@ -56,7 +56,7 @@ class ShoppingPage extends Component {
                          match={match}
                          moltin={this.state.moltin}/>;
                      }}/>
-              <Route path="/payment-gateway"
+              <Route path="/payment-gateway/:id"
                      component={(match) => {
                        return <PaymentGate
                          match={match}

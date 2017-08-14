@@ -73,8 +73,11 @@ class Address extends Component {
         postcode: 'CA94040',
         country: 'US'
       }
+    }).then((item)=>{
+      console.log(" item--->", item);
+      this.props.match.history.push(`/payment-gateway/${item.data.id}`);
     });
-    this.props.match.history.push('/payment-gateway');
+
    // pdfMake.createPdf(docDefinition).download();
 
   }
