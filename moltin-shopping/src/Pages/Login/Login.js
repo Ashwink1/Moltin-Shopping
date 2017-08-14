@@ -26,7 +26,7 @@ class Login extends React.Component {
       'email': this.state.username,
       'password': this.state.password,
     };
-    localStorage.setItem('user', 'payload');
+    localStorage.setItem('user', JSON.stringify(payload));
     // do the auth here
     this.props.history.push('/');
 

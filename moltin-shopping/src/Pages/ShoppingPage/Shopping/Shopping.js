@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import { ShoppingCard } from './../Component/ShoppingCard/ShoppingCard';
+//import './Shopping.css'
 
 
 class Shopping extends Component {
@@ -33,10 +34,10 @@ class Shopping extends Component {
   render() {
     const { contents } = this.state;
     return (
-      <div>
+      <div className="shopping-wrapper">
         {
           contents && contents.length ? contents.map((data) => {
-              return <div key={data.id}>
+              return <div className="shopping-wrapper-item" key={data.id}>
                 <ShoppingCard data={data}
                               addToCart={this.addToCart}
                 />
