@@ -2,11 +2,11 @@
  * Created by Ashwin on 13/08/17.
  */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import './ShoppingPage.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  NavLink,
   Switch,
 } from 'react-router-dom';
 import { gateway as MoltinGateway } from '@moltin/sdk';
@@ -35,10 +35,18 @@ class ShoppingPage extends Component {
       <div>
         <Router>
           <div>
-            <ul>
-              <li><Link to="/">Shop</Link></li>
-              <li><Link to="/cart">Cart</Link></li>
-            </ul>
+            <div className="navigation-bar">
+              <span className="navigation-bar-tile"> <NavLink
+                to="/"
+                activeClassName="selected"
+              >Shop</NavLink></span>
+              <span
+                className="navigation-bar-tile"
+              > <NavLink
+                to="/cart"
+                activeClassName="selected"
+              >Cart</NavLink></span>
+            </div>
             <Switch>
               <Route path="/" exact component={(match) => {
                 return <Shopping
