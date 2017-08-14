@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Redirect,
   Switch,
 } from 'react-router-dom';
 import './App.css';
@@ -21,17 +22,14 @@ class App extends Component {
     this.state = {
       isUser: false,
     };
-    this.requireAuth = this.requireAuth.bind(this);
+    this.isNotLoggedIn = this.isNotLoggedIn.bind(this);
   }
 
-  requireAuth(nextState, replace) {
+  isNotLoggedIn(nextState, replace) {
     console.log(' here--->',);
-    if (!this.state.isUser) {
-      replace({
-        pathname: '/login',
-        state: { nextPathname: nextState.location.pathname },
-      });
-    }
+    const user = localStorage.getItem('user');
+    console.log(" user--->",user );
+    return !user;
   }
 
   render() {
@@ -39,7 +37,13 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/" exact component={ShoppingPage} onEnter={this.requireAuth}/>
+            <Route exact path="/" render={() => (
+              this.isNotLoggedIn() ? (
+                <Redirect to="/login"/>
+              ) : (
+                <ShoppingPage />
+              )
+            )}/>
             <Route path="/login" component={Login}/>
           </Switch>
         </Router>
